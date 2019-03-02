@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Reset.scss";
 import "./App.scss";
 
 export class App extends React.Component {

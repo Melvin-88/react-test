@@ -6,7 +6,7 @@ export class ContractsDisplay extends Component {
         const {contracts} = this.props;
         return (
             <div>
-                <Header title="contracts"/>
+                <Header title="Contracts"/>
                 <ListContract data={contracts}/>
             </div>
         );

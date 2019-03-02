@@ -1,9 +1,20 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
 
 export const Header = ({title}) => (
-    <header>
-        <h2>{title}</h2>
+    <Head>
+        <Title>{title}</Title>
         <Link to={'/'}>Home</Link>
-    </header>
+    </Head>
 );
+
+const Title = styled.h1`
+  font-size: 30px;
+  margin-bottom: 10px;
+`;
+
+const Head = styled.header`
+  margin: 25px 0;
+  padding: 0 10px;
+`;
