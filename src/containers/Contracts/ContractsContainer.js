@@ -1,15 +1,21 @@
 import {connect} from 'react-redux';
 import {ContractsDisplay} from './ContractsDisplay';
-import {getAllContracts} from '../../selectors';
+import {contactListSelector} from '../../selectors';
+import {removeContactAction, getContactsListAction} from '../../actions/'
+
+const mapDispatchToProps = {
+    removeContactAction,
+    getContactsListAction
+};
 
 const mapStateToProps = state => {
-    const contracts = getAllContracts(state) || null;
+    const contacts = contactListSelector(state) || null;
     return {
-        contracts,
+        contacts,
     };
 };
 
 export const ContractsContainer = connect(
     mapStateToProps,
-    null,
+    mapDispatchToProps,
 )(ContractsDisplay);

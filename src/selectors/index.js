@@ -1,2 +1,1 @@
-export {getAllContracts} from './contractsSelectors';
-export {getAllCustomers} from './customersSelectors';
+export {contactListSelector, currentContactSelector} from './contactsSelectors';

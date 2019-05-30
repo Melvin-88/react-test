@@ -1,8 +1,7 @@
 export {
-    saveContracts
-} from './contracts';
-
-export {
-    saveCustomers,
-    removeCustomer
-} from './customers';
+    saveContactsListAction,
+    removeContactAction,
+    saveContactAction,
+    editContactAction,
+    getContactsListAction,
+} from './contacts';

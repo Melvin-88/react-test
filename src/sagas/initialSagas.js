@@ -1,13 +1,12 @@
-import { put } from "redux-saga/effects";
+import { put, call } from "redux-saga/effects";
+import * as API from '../api/';
 import {
-    saveContracts,
-    saveCustomers,
+    saveContactsListAction
 } from "../actions";
-import {InitialData} from '../initialData';
 
 export function* initData() {
-    //save all Contracts
-    yield put(saveContracts(InitialData.contracts));
-    //save all Customers
-    yield put(saveCustomers(InitialData.customers));
+    //save all Contacts
+    const contactsList = yield call(API.getContactListApi);
+    if(contactsList && contactsList.length)
+        yield put(saveContactsListAction(contactsList));
 }

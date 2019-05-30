@@ -5,9 +5,7 @@ import "./App.scss";
 
 export class App extends React.Component {
     render() {
-        return (
-            <div className="wrapper">{this.props.children}</div>
-        )
+        return this.props.children;
     }
 }
 

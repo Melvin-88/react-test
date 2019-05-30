@@ -1,12 +1,12 @@
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
-import ContractsReducer from './contractsReducer';
-import CustomersReducer from './customersReducer';
+import ContactsReducer from './contactsReducer';
+import {reducer as formReducer} from 'redux-form';
 
 const rootReducer = combineReducers({
+    form: formReducer,
     router: routerReducer,
-    contracts: ContractsReducer,
-    customers: CustomersReducer,
+    contacts: ContactsReducer,
 });
 
 export default rootReducer;

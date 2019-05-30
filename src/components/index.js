@@ -1,3 +1,2 @@
-export {Header} from './Header/Header';
-export {ListContract} from './ListContract/ListContract';
-export {ListCustomers} from './ListCustomers/ListCustomers';
+export {Header} from './Header/';
+export {ListContract} from './ListContract/';

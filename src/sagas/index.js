@@ -3,6 +3,9 @@ export {
 } from './initialSagas';
 
 export {
-    removeCustomerWatcher
-} from './customersSagas';
+    removeContactWatcher,
+    addContactWatcher,
+    editContactWatcher,
+    getContactsListWatcher
+} from './contactsSagas';
 

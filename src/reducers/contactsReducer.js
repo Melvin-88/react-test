@@ -2,19 +2,19 @@ import * as actions from '../actions';
 import {handleActions} from 'redux-actions';
 
 const initialState = {
-    customers_list: null,
+    contactsList: [],
 };
 
-const CustomersReducer = handleActions(
+const ContactsReducer = handleActions(
     {
-        [actions.saveCustomers]: (state, {payload}) => {
+        [actions.saveContactsListAction]: (state, {payload}) => {
             return {
                 ...state,
-                customers_list: payload,
+                contactsList: payload,
             };
         },
     },
     initialState,
 );
 
-export default CustomersReducer;
+export default ContactsReducer;
