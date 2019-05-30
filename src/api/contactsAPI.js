@@ -16,7 +16,7 @@ export const addContactApi = ({data}) =>
         },
     });
 
-export const removeContactApi = id =>  api.delete(`contacts/111${id}`);
+export const removeContactApi = id =>  api.delete(`contacts/${id}`);
 
 export const editContactApi = ({data, id}) =>
     api.patch(`contacts/${id}`, {
