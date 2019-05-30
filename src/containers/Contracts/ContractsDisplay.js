@@ -12,6 +12,9 @@ export class ContractsDisplay extends PureComponent {
 
     handlePageChange = (page) => {
         const {getContactsListAction} = this.props;
+        this.setState({
+            activePage: page
+        });
         getContactsListAction({page});
     };
 
