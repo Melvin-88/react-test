@@ -83,10 +83,20 @@ export const Empty = styled.td`
     text-align: center;
 `;
 
+export const Flex = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    h1{
+        margin: 0
+    }
+`;
+
 export const Pagination = styled.ul`
     display: flex;
     justify-content: center;
-    align-item: center;
+    align-items: center;
     margin: 30px 0;
     li{
         min-width: 30px;

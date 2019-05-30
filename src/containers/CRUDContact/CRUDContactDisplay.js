@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
+import {Link} from 'react-router-dom';
 import {Field, reduxForm, SubmissionError} from 'redux-form';
 import {required, email} from '../../validate';
 import {renderField, renderFieldTextArea} from '../../helpers/formFields/formFields';
-import {Title, Button, BtnRow, theme, FormWrapper} from '../../Theme/';
+import {Title, Button, BtnRow, theme, FormWrapper, Flex} from '../../Theme/';
 
 export class AddContactDisplay extends PureComponent {
 
@@ -35,7 +36,10 @@ export class AddContactDisplay extends PureComponent {
         if(id && (!currentItem || (currentItem && !currentItem.name))) return 'Loading..';
         return (
             <FormWrapper>
-                <Title>{currentItem ? `Edit ${currentItem.name}` : 'Add Contact'}</Title>
+                <Flex>
+                    <Title>{currentItem ? `Edit ${currentItem.name}` : 'Add Contact'}</Title>
+                    <Link to="/">Home</Link>
+                </Flex>
                 <form
                     onSubmit={handleSubmit(this.SubmitForm)}
                     className="form_auth"
