@@ -5,6 +5,11 @@ export const contactListSelector = createSelector(
     state => state
 );
 
+export const activePageSelector = createSelector(
+    state => state.contacts.activePage,
+    state => state
+);
+
 export const currentContactSelector = createSelector(
     (state, id) => {
         if(!state.contacts.contactsList || !state.contacts.contactsList.length) return null;

@@ -6,10 +6,12 @@ import {
     saveContactsListAction,
     saveContactAction,
     editContactAction,
-    getContactsListAction
+    getContactsListAction,
+    saveActivePageAction
 } from "../actions";
 import {
-    contactListSelector
+    contactListSelector,
+    activePageSelector
 } from "../selectors";
 
 //WORKERS
@@ -17,10 +19,13 @@ function* getContactsListWorker({payload}) {
     const addContact = yield call(API.getContactListApi, payload);
     if(addContact){
         yield put(saveContactsListAction(addContact));
+        yield put(saveActivePageAction(payload.page));
     }
 }
 
 function* addContactWorker({payload}) {
+    const page = yield select(activePageSelector);
+    payload.page = page;
     const addContact = yield call(API.addContactApi, payload);
     if(addContact){
         const currentData = yield select(contactListSelector);
@@ -33,7 +38,8 @@ function* addContactWorker({payload}) {
 function* removeContactWorker({payload}) {
     const removeContact = yield call(API.removeContactApi, payload);
     if(removeContact){
-        const response = yield call(API.getContactListApi);
+        const page = yield select(activePageSelector);
+        const response = yield call(API.getContactListApi, {page});
         if(response) yield put(saveContactsListAction(response));
     }
 }

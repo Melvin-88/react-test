@@ -1,1 +1,1 @@
-export {contactListSelector, currentContactSelector} from './contactsSelectors';
+export {contactListSelector, currentContactSelector, activePageSelector} from './contactsSelectors';
