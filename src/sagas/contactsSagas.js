@@ -6,31 +6,22 @@ import {
     saveContactsListAction,
     saveContactAction,
     editContactAction,
-    getContactsListAction,
-    saveActivePageAction
+    getContactsListAction
 } from "../actions";
-import {
-    contactListSelector,
-    activePageSelector
-} from "../selectors";
 
 //WORKERS
 function* getContactsListWorker({payload}) {
     const addContact = yield call(API.getContactListApi, payload);
     if(addContact){
         yield put(saveContactsListAction(addContact));
-        yield put(saveActivePageAction(payload.page));
     }
 }
 
 function* addContactWorker({payload}) {
-    const page = yield select(activePageSelector);
-    payload.page = page;
     const addContact = yield call(API.addContactApi, payload);
     if(addContact){
-        const currentData = yield select(contactListSelector);
-        currentData.push(addContact);
-        yield put(saveContactsListAction(currentData));
+        const contactsList = yield call(API.getContactListApi);
+        yield put(saveContactsListAction(contactsList));
         history.push('/');
     }
 }
@@ -38,8 +29,7 @@ function* addContactWorker({payload}) {
 function* removeContactWorker({payload}) {
     const removeContact = yield call(API.removeContactApi, payload);
     if(removeContact){
-        const page = yield select(activePageSelector);
-        const response = yield call(API.getContactListApi, {page});
+        const response = yield call(API.getContactListApi);
         if(response) yield put(saveContactsListAction(response));
     }
 }
@@ -47,11 +37,8 @@ function* removeContactWorker({payload}) {
 function* editContactWorker({payload}) {
     const editContact = yield call(API.editContactApi, payload);
     if(editContact){
-        const {id} = payload;
-        const currentData = yield select(contactListSelector);
-        const newData = currentData.filter((e)=> +e.id !== +id);
-        newData.push(editContact);
-        yield put(saveContactsListAction(newData));
+        const contactsList = yield call(API.getContactListApi);
+        yield put(saveContactsListAction(contactsList));
         history.push('/');
     };
 }

@@ -7,6 +7,6 @@ import {
 export function* initData() {
     //save all Contacts
     const contactsList = yield call(API.getContactListApi);
-    if(contactsList && contactsList.length)
+    if(contactsList && contactsList.data)
         yield put(saveContactsListAction(contactsList));
 }

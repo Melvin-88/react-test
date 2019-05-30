@@ -3,6 +3,5 @@ export {
     removeContactAction,
     saveContactAction,
     editContactAction,
-    getContactsListAction,
-    saveActivePageAction,
+    getContactsListAction
 } from './contacts';

@@ -4,7 +4,12 @@ const api = ApiCreator(BASE_URL);
 
 export const getContactListApi = ({page=1, limit=10}={}) => {
     let url = `contacts?_page=${page}&_limit=${limit}`;
-    return api.get(url);
+    return api.get(url, {
+        headers: {
+            "Content-Type": "application/json"
+        },
+        credentials: "same-origin"
+    });
 };
 
 export const addContactApi = ({data}) =>

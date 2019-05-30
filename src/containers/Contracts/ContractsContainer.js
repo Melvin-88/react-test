@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {ContractsDisplay} from './ContractsDisplay';
-import {contactListSelector, activePageSelector} from '../../selectors';
+import {contactListSelector} from '../../selectors';
 import {removeContactAction, getContactsListAction} from '../../actions/'
 
 const mapDispatchToProps = {
@@ -10,10 +10,8 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => {
     const contacts = contactListSelector(state) || null;
-    const activePage = activePageSelector(state);
     return {
-        contacts,
-        activePage
+        contacts
     };
 };
 

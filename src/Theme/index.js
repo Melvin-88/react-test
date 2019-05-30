@@ -93,31 +93,6 @@ export const Flex = styled.div`
     }
 `;
 
-export const Pagination = styled.ul`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 30px 0;
-    li{
-        min-width: 30px;
-        height: 30px;
-        text-align: center;
-        background: #fff;
-        border-radius: 8px;
-        margin: 0 10px;
-        border: 1px solid #ccc;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        a{
-            padding: 0 5px;
-            &:hover{
-                cursor: pointer;
-            }
-        }
-    }
-`;
-
 export const BtnRow = styled.div`
     display: flex;
     align-item: center;

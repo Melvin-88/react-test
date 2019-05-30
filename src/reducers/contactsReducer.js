@@ -3,7 +3,6 @@ import {handleActions} from 'redux-actions';
 
 const initialState = {
     contactsList: [],
-    activePage: 1,
 };
 
 const ContactsReducer = handleActions(
@@ -13,13 +12,7 @@ const ContactsReducer = handleActions(
                 ...state,
                 contactsList: payload,
             };
-        },
-        [actions.saveActivePageAction]: (state, {payload}) => {
-            return {
-                ...state,
-                activePage: payload,
-            };
-        },
+        }
     },
     initialState,
 );

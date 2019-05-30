@@ -1,9 +1,14 @@
 import React, { PureComponent } from 'react';
 import {history} from '../../';
 import {Header, ListContract} from '../../components';
-import {Wrapper, Title, Button, theme, Pagination} from '../../Theme/'
+import Pagination from "react-js-pagination";
+import {Wrapper, Title, Button, theme} from '../../Theme/'
 
 export class ContractsDisplay extends PureComponent {
+
+    state={
+        activePage: 1
+    };
 
     handlePageChange = (page) => {
         const {getContactsListAction} = this.props;
@@ -11,7 +16,8 @@ export class ContractsDisplay extends PureComponent {
     };
 
     render() {
-        const {contacts, removeContactAction, activePage} = this.props;
+        const {contacts, removeContactAction} = this.props;
+        const {activePage} = this.state;
         return (
             <Wrapper>
                 <Header
@@ -29,18 +35,16 @@ export class ContractsDisplay extends PureComponent {
                     }
                 />
                 <ListContract
-                    data={contacts}
+                    data={contacts.data}
                     removeContact={removeContactAction}
                 />
-                <Pagination>
-                    {activePage !== 1 ?
-                        <li><a onClick={() => this.handlePageChange(activePage-1)}>Back</a></li>
-                    : null}
-                    <li>{activePage}</li>
-                    {contacts.length && contacts.length >= 10 ?
-                        <li><a onClick={() => this.handlePageChange(activePage+1)}>Next</a></li>
-                    : null}
-                </Pagination>
+                <Pagination
+                    activePage={activePage}
+                    itemsCountPerPage={10}
+                    totalItemsCount={contacts.totalCount}
+                    pageRangeDisplayed={5}
+                    onChange={this.handlePageChange}
+                />
             </Wrapper>
         );
     }
