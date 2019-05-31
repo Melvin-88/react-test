@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import {history} from '../../';
 import {Header, ListContract} from '../../components';
 import Pagination from "react-js-pagination";
-import {Wrapper, Title, Button, theme} from '../../Theme/'
+import {Wrapper, Title, Button, theme, PaginationRow} from '../../Theme/'
 
 export class ContractsDisplay extends PureComponent {
 
@@ -41,13 +41,17 @@ export class ContractsDisplay extends PureComponent {
                     data={contacts.data}
                     removeContact={removeContactAction}
                 />
-                <Pagination
-                    activePage={activePage}
-                    itemsCountPerPage={10}
-                    totalItemsCount={contacts.totalCount}
-                    pageRangeDisplayed={5}
-                    onChange={this.handlePageChange}
-                />
+                {contacts.totalCount > 10 ?
+                    <PaginationRow>
+                        <Pagination
+                            activePage={activePage}
+                            itemsCountPerPage={10}
+                            totalItemsCount={contacts.totalCount}
+                            pageRangeDisplayed={5}
+                            onChange={this.handlePageChange}
+                        />
+                    </PaginationRow>
+                    : null}
             </Wrapper>
         );
     }

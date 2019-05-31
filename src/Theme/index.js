@@ -56,6 +56,39 @@ export const TH = styled.th`
   vertical-align: middle;
 `;
 
+export const PaginationRow = styled.div`
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    li{
+        margin: 0 10px
+        &.active{
+            a{
+                background: palevioletred;
+                color: #fff;
+            }
+        }
+        a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width:30px;
+            height:30px;
+            background: #eaeaea;
+            color: #271b8e;
+                border: 1px solid #cccccc;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+    }
+  }
+`;
+
 export const TR = styled.tr`
   border-bottom: 1px solid #cccccc;
     &:last-of-type{
