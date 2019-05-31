@@ -7,12 +7,13 @@ export default baseUrl => {
             .then(checkStatus)
             .then(async result => {
                 const obj = {};
-                obj.data = await result.json();
+                const res = await result.json();
+                obj.data = res;
                 result.headers.forEach((el, key)=>{
                     if(key === 'x-total-count') obj.totalCount = el;
                 });
                 if(obj.totalCount) return obj;
-                return result.json();
+                return res;
             })
             .catch((err) => {
                 console.log(err);
